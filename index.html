@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="question">
-            <h2>Question:</h2>
-            <p id="questionText">Question text</p>
-        </div>
-        <div class="voice-control">
-            <button id="startButton">Start voice recognition</button>
-            <div id="recognizedText"></div>
-        </div>
+        <h1 class="questionText"></h1>
+        <button class="startButton">Start voice recognition</button>
     </div>
+    <footer>
+        <div class="recognizedText">
+            Recognized text:
+        </div>
+    </footer>
     <script src="main.js"></script>
 </body>
+
 </html>
