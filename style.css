@@ -47,3 +47,33 @@ h1 {
 .progressBar::-webkit-progress-bar {
     background-color: #ccc; 
 }
+
+.lights {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.light {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.light__correct__default {
+    background-color: #D8FFE0;
+}
+
+.light__wrong__default {
+    background-color: #FFD8D8;
+}
+
+.light__correct__active {
+    background-color: #49FC90;
+}
+
+.light__wrong__active {
+    background-color: #FC4949;
+}
+
