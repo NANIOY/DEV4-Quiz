@@ -30,15 +30,17 @@ let currentQuestionIndex = 0;
 
 document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
 
+// recognition event
 recognition.onresult = function(event) {
     console.log(event);
-    const transcript = event.results[0][0].transcript.trim();
-    const answer = transcript.charAt(0) + transcript.slice(1);
-    const possibleAnswers = questions[currentQuestionIndex].answers;
-    let isCorrect = false;
+    const transcript = event.results[0][0].transcript.trim(); // get first result and remove any whitespace
+    const answer = transcript.charAt(0) + transcript.slice(1); // process answer
+    const possibleAnswers = questions[currentQuestionIndex].answers; // get possible answers
+    let isCorrect = false; 
     
-    document.querySelector(".recognizedText").textContent = "Your answer is: " + transcript;
+    document.querySelector(".recognizedText").textContent = "Your answer is: " + transcript; // display recognized text
     
+    // check if the answer is correct
     for (let i = 0; i < possibleAnswers.length; i++) {
         if (answer === possibleAnswers[i]) {
             isCorrect = true;
@@ -46,6 +48,7 @@ recognition.onresult = function(event) {
         }
     }
     
+    // display the correct or wrong light
     if (isCorrect) {
         document.querySelector(".light__correct__default").classList.add("light__correct__active");
         document.querySelector(".light__wrong__default").classList.remove("light__wrong__active");
@@ -61,15 +64,18 @@ recognition.onresult = function(event) {
     speakBtn.disabled = false;
 }
 
+// start button
 speakBtn.addEventListener('click', () => {
     console.log("Start listening");
     recognition.start();
     speakBtn.disabled = true;
 });
 
+// next question
 function goToNextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
+        // display next question and update progress bar
         document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
         document.querySelector(".progressBar").value = currentQuestionIndex + 1;
 
