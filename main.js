@@ -72,6 +72,6 @@ function goToNextQuestion() {
     if (currentQuestionIndex < questions.length) {
         document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
     } else {
-        console.log("Quiz completed!");
+        document.querySelector(".container").innerHTML = "<h1>Quiz Completed!</h1>";
     }
 }
