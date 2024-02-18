@@ -6,23 +6,23 @@ recognition.lang = 'en-US';
 const questions = [
     {
         question: "What is the capital of France?",
-        answer: "Paris"
+        answers: ["Paris"]
     },
     {
         question: "How many continents are there in the world?",
-        answer: "Seven"
+        answers: ["7", "seven"]
     },
     {
         question: "Which planet is known as the 'Red Planet'?",
-        answer: "Mars"
+        answers: ["Mars"]
     },
     {
         question: "What is the capital city of Australia?",
-        answer: "Canberra"
+        answers: ["Canberra"]
     },
     {
-        question: "What is the approximate value of the mathematical constant e to 10 decimal places?",
-        answer: "2.718281828"
+        question: "In quantum mechanics, what is the name of the phenomenon where particles are connected over large distances, suggesting instantaneous communication?",
+        answers: ["quantum entanglement"]
     }
 ];
 
@@ -34,13 +34,25 @@ recognition.onresult = function(event) {
     console.log(event);
     const transcript = event.results[0][0].transcript.trim();
     const answer = transcript.charAt(0) + transcript.slice(1);
-    const correctAnswer = questions[currentQuestionIndex].answer;
+    const possibleAnswers = questions[currentQuestionIndex].answers;
+    let isCorrect = false;
     
     document.querySelector(".recognizedText").textContent = "Your answer is: " + transcript;
     
-    if (answer === correctAnswer) {
+    for (let i = 0; i < possibleAnswers.length; i++) {
+        if (answer === possibleAnswers[i]) {
+            isCorrect = true;
+            break;
+        }
+    }
+    
+    if (isCorrect) {
         document.querySelector(".light__correct__default").classList.add("light__correct__active");
         document.querySelector(".light__wrong__default").classList.remove("light__wrong__active");
+
+        setTimeout(() => {
+            goToNextQuestion();
+        }, 500);
     } else {
         document.querySelector(".light__correct__default").classList.remove("light__correct__active");
         document.querySelector(".light__wrong__default").classList.add("light__wrong__active");
@@ -54,3 +66,12 @@ speakBtn.addEventListener('click', () => {
     recognition.start();
     speakBtn.disabled = true;
 });
+
+function goToNextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
+    } else {
+        console.log("Quiz completed!");
+    }
+}
