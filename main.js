@@ -72,6 +72,11 @@ function goToNextQuestion() {
     if (currentQuestionIndex < questions.length) {
         document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
         document.querySelector(".progressBar").value = currentQuestionIndex + 1;
+
+        // reset lights and recognized text
+        document.querySelector(".light__correct__default").classList.remove("light__correct__active");
+        document.querySelector(".light__wrong__default").classList.remove("light__wrong__active");
+        document.querySelector(".recognizedText").textContent = "Your answer is:";
     } else {
         document.querySelector(".container").innerHTML = "<h1>Quiz Completed!</h1>";
     }
