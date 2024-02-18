@@ -29,20 +29,21 @@ h1 {
     cursor: pointer;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 4%;
-    background-color: #040404;
-    padding: 10px 0;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.recognizedText {
+    font-size: 16px;
+    margin-bottom: 24px;
 }
 
-footer .recognizedText {
-    color: #ffffff;
-    font-size: 16px;
+.progressBar {
+    max-width: 90%;
+    width: 256px;
+    height: 16px;
+}
+
+.progressBar::-webkit-progress-value {
+    background-color: #007bff;
+}
+
+.progressBar::-webkit-progress-bar {
+    background-color: #ccc; 
 }
