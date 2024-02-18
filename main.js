@@ -71,6 +71,7 @@ function goToNextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         document.querySelector(".questionText").textContent = questions[currentQuestionIndex].question;
+        document.querySelector(".progressBar").value = currentQuestionIndex + 1;
     } else {
         document.querySelector(".container").innerHTML = "<h1>Quiz Completed!</h1>";
     }
