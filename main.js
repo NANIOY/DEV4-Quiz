@@ -1,5 +1,5 @@
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const speakBtn = document.querySelector('.startButton');
+const speakBtn = document.querySelector('.button__start');
 const recognition = new SpeechRecognition();
 recognition.lang = 'en-US';
 
@@ -87,3 +87,15 @@ function goToNextQuestion() {
         document.querySelector(".container").innerHTML = "<h1>Quiz Completed!</h1>";
     }
 }
+
+const synth = window.speechSynthesis;
+
+document.querySelector(".button__speech").addEventListener("click", () => {
+    let currentQuestion = questions[currentQuestionIndex].question;
+    let utterance = new SpeechSynthesisUtterance(currentQuestion);
+    utterance.lang = "en-US";
+    utterance.pitch = 1;
+    utterance.rate = 1;
+    synth.speak(utterance);
+    console.log("Spoken question:", currentQuestion);
+});

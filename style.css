@@ -19,16 +19,6 @@ h1 {
     font-size: 24px;
 }
 
-.startButton {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
 .recognizedText {
     font-size: 16px;
     margin-bottom: 24px;
@@ -77,3 +67,25 @@ h1 {
     background-color: #FC4949;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.button__start {
+    background-color: #4CAF50;
+}
+
+.button__speech {
+    background-color: #4c75af;
+}
